@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mobilemart/extra/res/colors.dart';
 import 'package:mobilemart/extra/res/const_widget.dart';
 import 'package:mobilemart/items_view/Charger/add_charger.dart';
+import 'package:mobilemart/items_view/Charger/detail_screen.dart';
 import 'package:mobilemart/items_view/cable/add_cable.dart';
 import 'package:mobilemart/items_view/mobilePhone/addmobile.dart';
 
@@ -24,8 +25,10 @@ class ChargerPage extends StatelessWidget {
         backgroundColor: blulight,
       ),
       floatingActionButton: FloatingActionButton(
+          backgroundColor: blulight,
+        foregroundColor: black,
         onPressed: () {
-          Navigator.push(
+          Navigator.pushReplacement(
             context,
             MaterialPageRoute(
               builder: (context) => const AddCharger(),
@@ -58,15 +61,15 @@ class ChargerPage extends StatelessWidget {
                 itemCount: itemhome.length,
                 itemBuilder: (BuildContext context, int index) {
                   return InkWell(
-                    // onTap: () {
-                    //   Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute<dynamic>(
-                    //       builder: (context) =>
-                    //           DetailScreen(itemAxis: itemhome[index]),
-                    //     ),
-                    //   );
-                    // },
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute<dynamic>(
+                          builder: (context) =>
+                              ChargerDetailScreen(itemAxis: itemhome[index]),
+                        ),
+                      );
+                    },
                     child: Padding(
                       padding: const EdgeInsets.all(8),
                       child: Container(
@@ -107,7 +110,7 @@ class ChargerPage extends StatelessWidget {
                               itemhome[index]['Price'].toString(),
                               style: GoogleFonts.andadaPro(),
                             ),
-                             Row(
+                             Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 IconButton(
                                   onPressed: () {},

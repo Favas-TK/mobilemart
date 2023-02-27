@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mobilemart/extra/res/colors.dart';
 import 'package:mobilemart/extra/res/const_widget.dart';
 import 'package:mobilemart/items_view/HeadPhone/add_headphone.dart';
+import 'package:mobilemart/items_view/HeadPhone/detail_screen.dart';
 
 class HeadPhonePage extends StatelessWidget {
   HeadPhonePage({super.key});
@@ -20,6 +21,8 @@ class HeadPhonePage extends StatelessWidget {
         backgroundColor: blulight,
       ),
       floatingActionButton: FloatingActionButton(
+          backgroundColor: blulight,
+        foregroundColor: black,
         onPressed: () {
           Navigator.push(
             context,
@@ -54,15 +57,15 @@ class HeadPhonePage extends StatelessWidget {
                 itemCount: itemhome.length,
                 itemBuilder: (BuildContext context, int index) {
                   return InkWell(
-                    // onTap: () {
-                    //   Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute<dynamic>(
-                    //       builder: (context) =>
-                    //           DetailScreen(itemAxis: itemhome[index]),
-                    //     ),
-                    //   );
-                    // },
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute<dynamic>(
+                          builder: (context) =>
+                              HeadphoneDetailScreen(itemAxis: itemhome[index]),
+                        ),
+                      );
+                    },
                     child: Padding(
                       padding: const EdgeInsets.all(8),
                       child: Container(
@@ -104,6 +107,7 @@ class HeadPhonePage extends StatelessWidget {
                               style: GoogleFonts.andadaPro(),
                             ),
                             Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 IconButton(
                                   onPressed: () {},

@@ -7,7 +7,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:mobilemart/extra/res/colors.dart';
 import 'package:mobilemart/extra/res/const_widget.dart';
 import 'package:mobilemart/items_view/BT_dongle/BT_Dongle.dart';
-import 'package:mobilemart/items_view/mobilePhone/bloc/information_add_bloc.dart';
+import 'package:mobilemart/items_view/BT_dongle/bloc/information_add_bloc.dart';
 import 'package:mobilemart/view/screen_get_started/widgets/custom_elevated_btn_widget.dart';
 import 'package:mobilemart/view/screen_login/widgets/custom_text_field_widget.dart';
 
@@ -65,7 +65,7 @@ class _AddBTDongltState extends State<AddBTDonglt> {
                 content: Text('Sucessfully added'),
               ),
             );
-            Navigator.push(
+            Navigator.pushReplacement(
               context,
               MaterialPageRoute<dynamic>(
                 builder: (context) => BTDonglePage(),
@@ -153,7 +153,7 @@ class _AddBTDongltState extends State<AddBTDonglt> {
                             child: CustomElevatedBtnWidget(
                               btnText: 'Submit',
                               onpressed: () => itemDetails.add(
-                                AddDetailEvent(
+                                DongleAddDetailEvent(
                                   image: imagefiles,
                                   name: btDongleName.text,
                                   description: btDongleDescription.text,

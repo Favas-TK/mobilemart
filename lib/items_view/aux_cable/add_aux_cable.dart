@@ -1,15 +1,5 @@
-import 'dart:io';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:mobilemart/extra/res/colors.dart';
-import 'package:mobilemart/extra/res/const_widget.dart';
-import 'package:mobilemart/items_view/aux_cable/aux_cable.dart';
-import 'package:mobilemart/items_view/mobilePhone/bloc/information_add_bloc.dart';
-import 'package:mobilemart/view/screen_get_started/widgets/custom_elevated_btn_widget.dart';
-import 'package:mobilemart/view/screen_login/widgets/custom_text_field_widget.dart';
+
+import 'package:mobilemart/extra/exports/exports.dart';
 
 class AddAuxCable extends StatefulWidget {
   const AddAuxCable({super.key});
@@ -63,7 +53,7 @@ class _AddAuxCableState extends State<AddAuxCable> {
                 content: Text('Sucessfully added'),
               ),
             );
-            Navigator.push(
+            Navigator.pushReplacement(
               context,
               MaterialPageRoute<dynamic>(
                 builder: (context) => AuxCablePage(),
@@ -151,7 +141,7 @@ class _AddAuxCableState extends State<AddAuxCable> {
                             child: CustomElevatedBtnWidget(
                               btnText: 'Submit',
                               onpressed: () => itemDetails.add(
-                                AddDetailEvent(
+                                AuxAddDetailEvent(
                                   image: imagefiles,
                                   name: auxName.text,
                                   description: auxDescription.text,

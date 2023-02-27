@@ -14,16 +14,16 @@ class InformationAddBloc
     extends Bloc<InformationAddEvent, InformationAddState> {
   InformationAddBloc() : super(InformationAddInitial()) {
     on<InformationAddEvent>((event, emit) async {
-      if (event is AddDetailEvent) {
+      if (event is AuxAddDetailEvent) {
         try {
           final auth = FirebaseAuth.instance;
-          final itemAdd =
+          final auxAdd =
               FirebaseFirestore.instance.collection('Aux_cable_Collection');
 
           final userId = auth.currentUser!.uid;
 
           const uuid = Uuid();
-          final itemId = uuid.v4();
+          final auxId = uuid.v4();
           final images = event.image;
           final imageList = [];
           for (final image in images!) {
@@ -37,7 +37,7 @@ class InformationAddBloc
             imageList.add(imagelink);
           }
 
-          await itemAdd.doc(auth.currentUser!.uid).set({
+          await auxAdd.doc(auxId).set({
             'Name': event.name,
             'Description': event.description,
             'Price': event.price,

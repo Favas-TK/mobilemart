@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "811996082372",
-    "project_id": "mobile-mart-e43a8",
-    "storage_bucket": "mobile-mart-e43a8.appspot.com"
+    "project_number": "383328845356",
+    "project_id": "mobilemart-c3f72",
+    "storage_bucket": "mobilemart-c3f72.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:811996082372:android:d84dcc6d23fad261909991",
+        "mobilesdk_app_id": "1:383328845356:android:2b8b6456f0541f851bdb89",
         "android_client_info": {
           "package_name": "com.example.mobilemart"
         }
       },
       "oauth_client": [
         {
-          "client_id": "811996082372-3r7ae2h6a6ibet2nsj4a4e96md9ft6m6.apps.googleusercontent.com",
+          "client_id": "383328845356-8g6igk1tekah5r6t8r39ai4m0tufsl1f.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAa55BO6G4HpYy0tbZNsxExJADAvFWmYFk"
+          "current_key": "AIzaSyB6ze1gP2AYKIfWROgR0LuhGC019iOflIM"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "811996082372-3r7ae2h6a6ibet2nsj4a4e96md9ft6m6.apps.googleusercontent.com",
+              "client_id": "383328845356-8g6igk1tekah5r6t8r39ai4m0tufsl1f.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

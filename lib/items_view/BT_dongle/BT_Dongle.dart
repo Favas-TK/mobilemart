@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mobilemart/extra/res/colors.dart';
 import 'package:mobilemart/extra/res/const_widget.dart';
 import 'package:mobilemart/items_view/BT_dongle/add_dongle.dart';
+import 'package:mobilemart/items_view/BT_dongle/detail_screen.dart';
 
 class BTDonglePage extends StatelessWidget {
   BTDonglePage({super.key});
@@ -20,8 +21,10 @@ class BTDonglePage extends StatelessWidget {
         backgroundColor: blulight,
       ),
       floatingActionButton: FloatingActionButton(
+          backgroundColor: blulight,
+        foregroundColor: black,
         onPressed: () {
-          Navigator.push(
+          Navigator.pushReplacement(
             context,
             MaterialPageRoute(
               builder: (context) => const AddBTDonglt(),
@@ -54,15 +57,15 @@ class BTDonglePage extends StatelessWidget {
                 itemCount: itemhome.length,
                 itemBuilder: (BuildContext context, int index) {
                   return InkWell(
-                    // onTap: () {
-                    //   Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute<dynamic>(
-                    //       builder: (context) =>
-                    //           DetailScreen(itemAxis: itemhome[index]),
-                    //     ),
-                    //   );
-                    // },
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute<dynamic>(
+                          builder: (context) =>
+                              DongleDetailScreen(itemAxis: itemhome[index]),
+                        ),
+                      );
+                    },
                     child: Padding(
                       padding: const EdgeInsets.all(8),
                       child: Container(
@@ -104,12 +107,13 @@ class BTDonglePage extends StatelessWidget {
                               style: GoogleFonts.andadaPro(),
                             ),
                             Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 IconButton(
                                   onPressed: () {},
                                   icon: const Icon(Icons.edit),
                                 ),
-                               IconButton(
+                                IconButton(
                                   onPressed: () {
                                     showDialog(
                                       context: context,

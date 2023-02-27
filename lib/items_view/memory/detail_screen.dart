@@ -1,199 +1,179 @@
-// import 'package:carousel_slider/carousel_slider.dart';
-// import 'package:cloud_firestore/cloud_firestore.dart';
-// import 'package:firebase_auth/firebase_auth.dart';
-// import 'package:flutter/material.dart';
-// import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:flutter_screenutil/flutter_screenutil.dart';
-// import 'package:mobilemart/view/mobilePhone/bloc/information_add_bloc.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:mobilemart/extra/Divider/divider.dart';
+import 'package:mobilemart/extra/extentions/extentions.dart';
+import 'package:mobilemart/extra/res/colors.dart';
+import 'package:mobilemart/extra/res/const_widget.dart';
 
-// class DetailScreen extends StatefulWidget {
-//   DetailScreen({
-//     super.key,
-//     required this.itemAxis,
-//   });
+class MemoryDetailScreen extends StatefulWidget {
+  MemoryDetailScreen({
+    super.key,
+    required this.itemAxis,
+  });
 
-//   QueryDocumentSnapshot<Object?> itemAxis;
+  QueryDocumentSnapshot<Object?> itemAxis;
 
-//   @override
-//   State<DetailScreen> createState() => _DetailScreenState();
-// }
+  @override
+  State<MemoryDetailScreen> createState() => _MemoryDetailScreenState();
+}
 
-// class _DetailScreenState extends State<DetailScreen> {
-//   final parkingadd =
-//       FirebaseFirestore.instance.collection('MobilePhone_Collection');
+class _MemoryDetailScreenState extends State<MemoryDetailScreen> {
+  final mobileAdd =
+      FirebaseFirestore.instance.collection('Memory_Collection');
 
-//   final auth = FirebaseAuth.instance;
-//   final parkingDetailsUpdate = InformationAddBloc();
+  final auth = FirebaseAuth.instance;
 
-//   @override
-//   Widget build(BuildContext context) {
-//     final images = widget.itemAxis['Spot_image'] as List;
-//     return BlocProvider(
-//       create: (context) => parkingDetailsUpdate,
-//       child: BlocListener<InformationAddBloc, InformationAddState>(
-//         listener: (context, state) {
-//           if (state is DetailsAddUpdate) {}
-//         },
-//         child: Scaffold(
-//           body: SafeArea(
-//             child: SingleChildScrollView(
-//               child: Container(
-//                 height: 635,
-//                 width: 375,
-//                 child: Column(
-//                   children: [
-//                     Row(
-//                       children: [
-//                         const Padding(
-//                           padding: EdgeInsets.all(10),
-//                           child: CircleAvatar(
-//                             backgroundColor: Colors.transparent,
-//                             backgroundImage: AssetImage(
-//                                 'assets/images/pngimg.com - parking_PNG91.png'),
-//                           ),
-//                         ),
-//                         Text(
-//                           widget.itemAxis['Area_Name'].toString(),
-//                           style: const TextStyle(fontWeight: FontWeight.bold),
-//                         ),
-//                       ],
-//                     ),
-//                     Center(
-//                       child: CarouselSlider.builder(
-//                         itemCount: images.length,
-//                         options: CarouselOptions(),
-//                         itemBuilder: (
-//                           BuildContext context,
-//                           int itemIndex,
-//                           int pageViewIndex,
-//                         ) =>
-//                             Container(
-//                           height: 600,
-//                           width: 200,
-//                           child: Image.network(
-//                             images[itemIndex].toString(),
-//                             fit: BoxFit.cover,
-//                           ),
-//                         ),
-//                       ),
-//                     ),
-//                     ListTile(
-//                       title: Text(
-//                         widget.itemAxis['Area_Name'].toString(),
-//                         style: const TextStyle(
-//                           fontSize: 20,
-//                           fontWeight: FontWeight.bold,
-//                         ),
-//                       ),
-//                       subtitle: Row(
-//                         children: [
-//                           const Icon(Icons.location_on_outlined, size: 18),
-//                           Text(
-//                             widget.itemAxis['Location_Name'].toString(),
-//                             style: const TextStyle(
-//                               fontSize: 15,
-//                               fontWeight: FontWeight.bold,
-//                             ),
-//                           ),
-//                         ],
-//                       ),
-//                       trailing: const Text('30 slots'),
-//                     ),
-//                     const Divider(),
-//                     Padding(
-//                       padding: EdgeInsets.only(right: 230.h),
-//                       child: const Text(
-//                         'Information',
-//                         style: TextStyle(
-//                             fontSize: 15, fontWeight: FontWeight.bold),
-//                       ),
-//                     ),
-//                     const SizedBox(
-//                       height: 10,
-//                     ),
-//                     Container(
-//                       height: 50.h,
-//                       width: 300.h,
-//                       // child: Text(
-//                       //   parkdetail['Information'].toString(),
-//                       // ),
-//                     ),
-//                     Padding(
-//                       padding: EdgeInsets.only(right: 160.h),
-//                       child: const Text(
-//                         'Facilitities We Provide',
-//                         style: TextStyle(
-//                             fontSize: 15, fontWeight: FontWeight.bold),
-//                       ),
-//                     ),
-                   
-//                     const SizedBox(
-//                       height: 10,
-//                     ),
-//                     const SizedBox(
-//                       height: 10,
-//                     ),
-//                     Row(
-//                       mainAxisAlignment: MainAxisAlignment.center,
-//                       children: [
-//                         Container(
-//                           padding: const EdgeInsets.symmetric(horizontal: 20),
-//                           child: SizedBox(
-//                             //   height: 50,
-//                             child: MaterialButton(
-//                               shape: RoundedRectangleBorder(
-//                                 borderRadius: BorderRadius.circular(25),
-//                               ),
-//                               highlightElevation: 0,
-//                               textColor: Colors.white,
-//                               color: const Color.fromARGB(255, 235, 219, 174),
-//                               child: const Text(
-//                                 'Edit Page',
-//                                 style: TextStyle(color: Colors.black),
-//                               ),
-//                               onPressed: () {
-//                                 // parkingDetailsUpdate.add(
-//                                 //   UpdateDetailEvent(
-//                                 //     image:imagefiles,
-//                                 //     name: parkingAreaName.text,
-//                                 //     description: parkingInformation.text,
-//                                 //     locationName: parkingLocation.text,
-//                                 //     facilities: parkingFacilities.text,
-//                                 //     slots: parkingSlots.text,
-//                                 //   ),
-//                                 // );
-//                               },
-//                             ),
-//                           ),
-//                         ),
-//                         Container(
-//                           padding: const EdgeInsets.symmetric(horizontal: 20),
-//                           child: SizedBox(
-//                             //   height: 50,
-//                             child: MaterialButton(
-//                               shape: RoundedRectangleBorder(
-//                                 borderRadius: BorderRadius.circular(25),
-//                               ),
-//                               highlightElevation: 0,
-//                               textColor: Colors.white,
-//                               color: const Color.fromARGB(255, 235, 219, 174),
-//                               child: const Text(
-//                                 'Delete Page',
-//                                 style: TextStyle(color: Colors.black),
-//                               ),
-//                               onPressed: () {},
-//                             ),
-//                           ),
-//                         ),
-//                       ],
-//                     ),
-//                   ],
-//                 ),
-//               ),
-//             ),
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    final images = widget.itemAxis['image'] as List;
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.transparent,
+        actions: [
+          Padding(
+            padding: EdgeInsets.only(
+              right: context.getSize().width * 0.86,
+            ),
+            child: IconButton(
+              icon: const Icon(
+                Icons.arrow_back_ios_new,
+                color: black,
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          )
+        ],
+      ),
+      body: Center(
+        child: Card(
+          elevation: 50,
+          shadowColor: Colors.black,
+          color: blulight,
+          child: SingleChildScrollView(
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(
+                    context.getSize().width * 0.2,
+                  ),
+                  topRight: Radius.circular(
+                    context.getSize().width * 0.2,
+                  ),
+                  bottomLeft: Radius.circular(
+                    context.getSize().width * 0.2,
+                  ),
+                  bottomRight: Radius.circular(
+                    context.getSize().width * 0.2,
+                  ),
+                ),
+                color: white,
+              ),
+              child: Column(
+                children: [
+                  space10,
+                  emptybx,
+                  Center(
+                    child: CarouselSlider.builder(
+                      itemCount: images.length,
+                      options: CarouselOptions(),
+                      itemBuilder: (
+                        BuildContext context,
+                        int itemIndex,
+                        int pageViewIndex,
+                      ) =>
+                          SizedBox(
+                        height: 600,
+                        width: 200,
+                        child: Image.network(
+                          images[itemIndex].toString(),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                  ),
+                  space10,
+                  space10,
+                  CustomPaint(
+                    painter: DrawDottedhorizontalline(),
+                  ),
+                  Padding(
+                    padding: MediaQuery.of(context).viewInsets,
+                    child: Column(
+                      children: [
+                        space10,
+                        Padding(
+                          padding: EdgeInsets.only(
+                              right: context.getSize().width * 0.1),
+                          child: Text(
+                            widget.itemAxis['Name'].toString(),
+                            style: const TextStyle(
+                              color: Colors.black,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        space10,
+                        Padding(
+                          padding: EdgeInsets.only(
+                              right: context.getSize().width * 0.1),
+                          child: Text(
+                            widget.itemAxis['Description'].toString(),
+                            style: const TextStyle(
+                                color: Colors.black, fontSize: 15),
+                          ),
+                        ),
+                        space10,
+                        Padding(
+                          padding: EdgeInsets.only(
+                              right: context.getSize().width * .1),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Text('\u{20B9} '),
+                              Text(
+                                widget.itemAxis['Price'].toString(),
+                                style: const TextStyle(
+                                    color: Colors.black45, fontSize: 15),
+                              ),
+                            ],
+                          ),
+                        ),
+                        space10,
+                        Padding(
+                          padding: EdgeInsets.only(
+                              right: context.getSize().width * .1),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Text(
+                                'Balance item: ',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                              Text(
+                                widget.itemAxis['Count'].toString(),
+                                style: const TextStyle(
+                                    color: Colors.black45, fontSize: 15),
+                              ),
+                            ],
+                          ),
+                        ),
+                        space10,
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

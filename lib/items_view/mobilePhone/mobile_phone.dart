@@ -180,11 +180,11 @@ class MobilePhonePage extends StatelessWidget {
     );
   }
 
-  Future<void> deleteData(String id) async {
+  Future<void> deleteData(userId) async {
     final itemadd =
         FirebaseFirestore.instance.collection('MobilePhone_Collection');
     try {
-      await itemadd.doc(id).delete();
+      await itemadd.doc(userId).delete();
     } catch (e) {}
   }
 }

@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mobilemart/extra/res/colors.dart';
 import 'package:mobilemart/extra/res/const_widget.dart';
 import 'package:mobilemart/items_view/Sim_ejecter/add_sim_ejecter.dart';
-
+import 'package:mobilemart/items_view/Sim_ejecter/detail_screen.dart';
 
 class SimEjecterPage extends StatelessWidget {
   SimEjecterPage({super.key});
@@ -22,8 +22,10 @@ class SimEjecterPage extends StatelessWidget {
         backgroundColor: blulight,
       ),
       floatingActionButton: FloatingActionButton(
+          backgroundColor: blulight,
+        foregroundColor: black,
         onPressed: () {
-          Navigator.push(
+          Navigator.pushReplacement(
             context,
             MaterialPageRoute(
               builder: (context) => const AddSimEjecter(),
@@ -56,15 +58,15 @@ class SimEjecterPage extends StatelessWidget {
                 itemCount: itemhome.length,
                 itemBuilder: (BuildContext context, int index) {
                   return InkWell(
-                    // onTap: () {
-                    //   Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute<dynamic>(
-                    //       builder: (context) =>
-                    //           DetailScreen(itemAxis: itemhome[index]),
-                    //     ),
-                    //   );
-                    // },
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute<dynamic>(
+                          builder: (context) =>
+                              EjecterDetailScreen(itemAxis: itemhome[index]),
+                        ),
+                      );
+                    },
                     child: Padding(
                       padding: const EdgeInsets.all(8),
                       child: Container(
@@ -101,11 +103,12 @@ class SimEjecterPage extends StatelessWidget {
                               style: GoogleFonts.andadaPro(),
                             ),
                             space10,
-                             Text(
+                            Text(
                               itemhome[index]['Price'].toString(),
                               style: GoogleFonts.andadaPro(),
                             ),
-                             Row(
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 IconButton(
                                   onPressed: () {},
@@ -176,7 +179,8 @@ class SimEjecterPage extends StatelessWidget {
       ),
     );
   }
-   Future<void> deleteData(String id) async {
+
+  Future<void> deleteData(String id) async {
     final itemadd =
         FirebaseFirestore.instance.collection('Sim_Ejecter_Collection');
     try {

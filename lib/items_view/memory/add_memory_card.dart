@@ -6,8 +6,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mobilemart/extra/res/colors.dart';
 import 'package:mobilemart/extra/res/const_widget.dart';
+import 'package:mobilemart/items_view/memory/bloc/information_add_bloc.dart';
 import 'package:mobilemart/items_view/memory/memory_card.dart';
-import 'package:mobilemart/items_view/mobilePhone/bloc/information_add_bloc.dart';
 import 'package:mobilemart/view/screen_get_started/widgets/custom_elevated_btn_widget.dart';
 import 'package:mobilemart/view/screen_login/widgets/custom_text_field_widget.dart';
 
@@ -63,7 +63,7 @@ class _AddMemoryCardState extends State<AddMemoryCard> {
                 content: Text('Sucessfully added'),
               ),
             );
-            Navigator.push(
+            Navigator.pushReplacement(
               context,
               MaterialPageRoute<dynamic>(
                 builder: (context) => MemoryCardPage(),
@@ -151,7 +151,7 @@ class _AddMemoryCardState extends State<AddMemoryCard> {
                             child: CustomElevatedBtnWidget(
                               btnText: 'Submit',
                               onpressed: () => itemDetails.add(
-                                AddDetailEvent(
+                                MemoryAddDetailEvent(
                                   image: imagefiles,
                                   name: memoryCardName.text,
                                   description: memoryCardDescription.text,

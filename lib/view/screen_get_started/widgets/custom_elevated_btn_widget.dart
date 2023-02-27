@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:mobilemart/extra/res/colors.dart';
-import 'package:mobilemart/view/screen_get_started/widgets/custom_text_widget.dart';
+
+
+import 'package:mobilemart/extra/exports/exports.dart';
 
 class CustomElevatedBtnWidget extends StatelessWidget {
   const CustomElevatedBtnWidget({

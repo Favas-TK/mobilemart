@@ -5,14 +5,12 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:mobilemart/extra/res/colors.dart';
 import 'package:mobilemart/extra/res/const_widget.dart';
 import 'package:mobilemart/items_view/memory/add_memory_card.dart';
-
-
+import 'package:mobilemart/items_view/memory/detail_screen.dart';
 
 class MemoryCardPage extends StatelessWidget {
   MemoryCardPage({super.key});
 
-  final itemadd =
-      FirebaseFirestore.instance.collection('Memory_Collection');
+  final itemadd = FirebaseFirestore.instance.collection('Memory_Collection');
   final auth = FirebaseAuth.instance;
 
   @override
@@ -23,8 +21,10 @@ class MemoryCardPage extends StatelessWidget {
         backgroundColor: blulight,
       ),
       floatingActionButton: FloatingActionButton(
+          backgroundColor: blulight,
+        foregroundColor: black,
         onPressed: () {
-          Navigator.push(
+          Navigator.pushReplacement(
             context,
             MaterialPageRoute(
               builder: (context) => const AddMemoryCard(),
@@ -57,15 +57,15 @@ class MemoryCardPage extends StatelessWidget {
                 itemCount: itemhome.length,
                 itemBuilder: (BuildContext context, int index) {
                   return InkWell(
-                    // onTap: () {
-                    //   Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute<dynamic>(
-                    //       builder: (context) =>
-                    //           DetailScreen(itemAxis: itemhome[index]),
-                    //     ),
-                    //   );
-                    // },
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute<dynamic>(
+                          builder: (context) =>
+                              MemoryDetailScreen(itemAxis: itemhome[index]),
+                        ),
+                      );
+                    },
                     child: Padding(
                       padding: const EdgeInsets.all(8),
                       child: Container(
@@ -102,11 +102,12 @@ class MemoryCardPage extends StatelessWidget {
                               style: GoogleFonts.andadaPro(),
                             ),
                             space10,
-                             Text(
+                            Text(
                               itemhome[index]['Price'].toString(),
                               style: GoogleFonts.andadaPro(),
                             ),
-                             Row(
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 IconButton(
                                   onPressed: () {},
@@ -177,9 +178,9 @@ class MemoryCardPage extends StatelessWidget {
       ),
     );
   }
-   Future<void> deleteData(String id) async {
-    final itemadd =
-        FirebaseFirestore.instance.collection('Memory_Collection');
+
+  Future<void> deleteData(String id) async {
+    final itemadd = FirebaseFirestore.instance.collection('Memory_Collection');
     try {
       await itemadd.doc(id).delete();
     } catch (e) {}

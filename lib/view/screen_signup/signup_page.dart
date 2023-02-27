@@ -1,12 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mobilemart/extra/extentions/extentions.dart';
-import 'package:mobilemart/extra/res/colors.dart';
-import 'package:mobilemart/extra/res/const_widget.dart';
-import 'package:mobilemart/view/screen_login/login_page.dart';
-import 'package:mobilemart/view/screen_login/widgets/custom_text_field_widget.dart';
-import 'package:mobilemart/view/screen_signup/bloc/registration_bloc.dart';
-import '../screen_get_started/widgets/custom_elevated_btn_widget.dart';
+
+
+import 'package:mobilemart/extra/exports/exports.dart';
+
 
 class SignupPage extends StatelessWidget {
   SignupPage({super.key});
@@ -99,7 +94,7 @@ class SignupPage extends StatelessWidget {
                   const Text('Already Have  an account?'),
                   TextButton(
                     onPressed: () {
-                      Navigator.push(
+                      Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                           builder: (context) => LoginScreen(),

@@ -6,13 +6,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mobilemart/extra/res/colors.dart';
 import 'package:mobilemart/extra/res/const_widget.dart';
+import 'package:mobilemart/items_view/USB/bloc/information_add_bloc.dart';
 import 'package:mobilemart/items_view/USB/usb.dart';
-import 'package:mobilemart/items_view/mobilePhone/bloc/information_add_bloc.dart';
 import 'package:mobilemart/view/screen_get_started/widgets/custom_elevated_btn_widget.dart';
-
-import 'package:mobilemart/view/screen_home/homscreen.dart';
 import 'package:mobilemart/view/screen_login/widgets/custom_text_field_widget.dart';
-
 
 class AddUSB extends StatefulWidget {
   const AddUSB({super.key});
@@ -24,8 +21,7 @@ class AddUSB extends StatefulWidget {
 class _AddUSBState extends State<AddUSB> {
   late final XFile? image;
 
-  final itemAdd =
-      FirebaseFirestore.instance.collection('USB_Collection');
+  final itemAdd = FirebaseFirestore.instance.collection('USB_Collection');
 
   final auth = FirebaseAuth.instance;
 
@@ -67,7 +63,7 @@ class _AddUSBState extends State<AddUSB> {
                 content: Text('Sucessfully added'),
               ),
             );
-            Navigator.push(
+            Navigator.pushReplacement(
               context,
               MaterialPageRoute<dynamic>(
                 builder: (context) => USBPage(),
@@ -155,7 +151,7 @@ class _AddUSBState extends State<AddUSB> {
                             child: CustomElevatedBtnWidget(
                               btnText: 'Submit',
                               onpressed: () => itemDetails.add(
-                                AddDetailEvent(
+                                USBAddDetailEvent(
                                   image: imagefiles,
                                   name: usbName.text,
                                   description: usbDescription.text,

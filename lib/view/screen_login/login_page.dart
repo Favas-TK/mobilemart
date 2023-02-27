@@ -1,14 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mobilemart/extra/extentions/extentions.dart';
-import 'package:mobilemart/extra/res/colors.dart';
-import 'package:mobilemart/extra/res/const_widget.dart';
-import 'package:mobilemart/view/screen_home/homscreen.dart';
-import 'package:mobilemart/view/screen_login/bloc/authentication_bloc.dart';
-import 'package:mobilemart/view/screen_login/widgets/custom_text_field_widget.dart';
-import 'package:mobilemart/view/screen_login/widgets/top_stack_welcome_widget.dart';
-import 'package:mobilemart/view/screen_signup/signup_page.dart';
-import '../screen_get_started/widgets/custom_elevated_btn_widget.dart';
+
+
+import 'package:mobilemart/extra/exports/exports.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({Key? key}) : super(key: key);
@@ -83,7 +75,7 @@ class LoginScreen extends StatelessWidget {
                   const Text('Dont have an account?'),
                   TextButton(
                     onPressed: () {
-                      Navigator.push(
+                      Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
                           builder: (context) => SignupPage(),

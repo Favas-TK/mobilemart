@@ -6,8 +6,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mobilemart/extra/res/colors.dart';
 import 'package:mobilemart/extra/res/const_widget.dart';
+import 'package:mobilemart/items_view/HeadPhone/bloc/headphone_bloc.dart';
 import 'package:mobilemart/items_view/HeadPhone/head_phone.dart';
-import 'package:mobilemart/items_view/mobilePhone/bloc/information_add_bloc.dart';
 import 'package:mobilemart/view/screen_get_started/widgets/custom_elevated_btn_widget.dart';
 import 'package:mobilemart/view/screen_login/widgets/custom_text_field_widget.dart';
 
@@ -26,7 +26,7 @@ class _AddHeadPhonesState extends State<AddHeadPhones> {
 
   final auth = FirebaseAuth.instance;
 
-  final itemDetails = InformationAddBloc();
+  final itemDetails = HeadphoneBloc();
 
   TextEditingController headPhoneName = TextEditingController();
 
@@ -56,7 +56,7 @@ class _AddHeadPhonesState extends State<AddHeadPhones> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => itemDetails,
-      child: BlocListener<InformationAddBloc, InformationAddState>(
+      child: BlocListener<HeadphoneBloc, HeadphoneState>(
         listener: (context, state) {
           if (state is DetailsAddSucess) {
             ScaffoldMessenger.of(context).showSnackBar(
@@ -64,7 +64,7 @@ class _AddHeadPhonesState extends State<AddHeadPhones> {
                 content: Text('Sucessfully added'),
               ),
             );
-            Navigator.push(
+            Navigator.pushReplacement(
               context,
               MaterialPageRoute<dynamic>(
                 builder: (context) => HeadPhonePage(),
@@ -152,7 +152,7 @@ class _AddHeadPhonesState extends State<AddHeadPhones> {
                             child: CustomElevatedBtnWidget(
                               btnText: 'Submit',
                               onpressed: () => itemDetails.add(
-                                AddDetailEvent(
+                                AddDetailsEvent(
                                   image: imagefiles,
                                   name: headPhoneName.text,
                                   description: headPhoneDescription.text,

@@ -1,10 +1,10 @@
-part of 'information_add_bloc.dart';
+part of 'headphone_bloc.dart';
 
 @immutable
-abstract class InformationAddEvent {}
+abstract class HeadphoneEvent {}
 
-class AddDetailEvent extends InformationAddEvent {
-  AddDetailEvent({
+class AddDetailsEvent extends HeadphoneEvent {
+  AddDetailsEvent({
     required this.image,
     required this.name,
     required this.description,

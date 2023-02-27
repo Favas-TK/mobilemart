@@ -14,16 +14,16 @@ class InformationAddBloc
     extends Bloc<InformationAddEvent, InformationAddState> {
   InformationAddBloc() : super(InformationAddInitial()) {
     on<InformationAddEvent>((event, emit) async {
-      if (event is AddDetailEvent) {
+      if (event is EjecterAddDetailEvent) {
         try {
           final auth = FirebaseAuth.instance;
-          final parkingAdd =
+          final ejecterAdd =
               FirebaseFirestore.instance.collection('Sim_Ejecter_Collection');
 
           final userId = auth.currentUser!.uid;
 
           const uuid = Uuid();
-          final parkingId = uuid.v4();
+          final ejecterId = uuid.v4();
           final images = event.image;
           final imageList = [];
           for (final image in images!) {
@@ -37,7 +37,7 @@ class InformationAddBloc
             imageList.add(imagelink);
           }
 
-          await parkingAdd.doc(auth.currentUser!.uid).set({
+          await ejecterAdd.doc(ejecterId).set({
             'Name': event.name,
             'Description': event.description,
             'Price': event.price,

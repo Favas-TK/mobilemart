@@ -1,11 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:mobilemart/extra/res/colors.dart';
-import 'package:mobilemart/extra/res/const_widget.dart';
-import 'package:mobilemart/items_view/aux_cable/add_aux_cable.dart';
-
+import 'package:mobilemart/extra/exports/exports.dart';
 
 class AuxCablePage extends StatelessWidget {
   AuxCablePage({super.key});
@@ -21,8 +14,10 @@ class AuxCablePage extends StatelessWidget {
         backgroundColor: blulight,
       ),
       floatingActionButton: FloatingActionButton(
+          backgroundColor: blulight,
+        foregroundColor: black,
         onPressed: () {
-          Navigator.push(
+          Navigator.pushReplacement(
             context,
             MaterialPageRoute(
               builder: (context) => const AddAuxCable(),
@@ -55,15 +50,15 @@ class AuxCablePage extends StatelessWidget {
                 itemCount: itemhome.length,
                 itemBuilder: (BuildContext context, int index) {
                   return InkWell(
-                    // onTap: () {
-                    //   Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute<dynamic>(
-                    //       builder: (context) =>
-                    //           DetailScreen(itemAxis: itemhome[index]),
-                    //     ),
-                    //   );
-                    // },
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute<dynamic>(
+                          builder: (context) =>
+                              DetailScreen(itemAxis: itemhome[index]),
+                        ),
+                      );
+                    },
                     child: Padding(
                       padding: const EdgeInsets.all(8),
                       child: Container(
@@ -105,12 +100,13 @@ class AuxCablePage extends StatelessWidget {
                               style: GoogleFonts.andadaPro(),
                             ),
                             Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
                                 IconButton(
                                   onPressed: () {},
                                   icon: const Icon(Icons.edit),
                                 ),
-                               IconButton(
+                                IconButton(
                                   onPressed: () {
                                     showDialog(
                                       context: context,

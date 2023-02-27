@@ -1,4 +1,5 @@
 import 'dart:io';
+
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -7,14 +8,13 @@ import 'package:image_picker/image_picker.dart';
 import 'package:meta/meta.dart';
 import 'package:uuid/uuid.dart';
 
-part 'information_add_event.dart';
-part 'information_add_state.dart';
+part 'headphone_event.dart';
+part 'headphone_state.dart';
 
-class InformationAddBloc
-    extends Bloc<InformationAddEvent, InformationAddState> {
-  InformationAddBloc() : super(InformationAddInitial()) {
-    on<InformationAddEvent>((event, emit) async {
-      if (event is AddDetailEvent) {
+class HeadphoneBloc extends Bloc<HeadphoneEvent, HeadphoneState> {
+  HeadphoneBloc() : super(HeadphoneInitial()) {
+    on<HeadphoneEvent>((event, emit) async {
+      if (event is AddDetailsEvent) {
         try {
           final auth = FirebaseAuth.instance;
           final headphoneAdd =

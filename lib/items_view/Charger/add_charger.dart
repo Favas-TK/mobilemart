@@ -6,11 +6,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mobilemart/extra/res/colors.dart';
 import 'package:mobilemart/extra/res/const_widget.dart';
+import 'package:mobilemart/items_view/Charger/bloc/information_add_bloc.dart';
 import 'package:mobilemart/items_view/Charger/chrger.dart';
-import 'package:mobilemart/items_view/mobilePhone/bloc/information_add_bloc.dart';
 import 'package:mobilemart/view/screen_get_started/widgets/custom_elevated_btn_widget.dart';
-
-import 'package:mobilemart/view/screen_home/homscreen.dart';
 import 'package:mobilemart/view/screen_login/widgets/custom_text_field_widget.dart';
 
 
@@ -67,7 +65,7 @@ class _AddChargerState extends State<AddCharger> {
                 content: Text('Sucessfully added'),
               ),
             );
-            Navigator.push(
+            Navigator.pushReplacement(
               context,
               MaterialPageRoute<dynamic>(
                 builder: (context) => ChargerPage(),
@@ -155,7 +153,7 @@ class _AddChargerState extends State<AddCharger> {
                             child: CustomElevatedBtnWidget(
                               btnText: 'Submit',
                               onpressed: () => itemDetails.add(
-                                AddDetailEvent(
+                                ChargerAddDetailEvent(
                                   image: imagefiles,
                                   name: chargerName.text,
                                   description: chargerDescription.text,

@@ -23,7 +23,7 @@ class InformationAddBloc
           final userId = auth.currentUser!.uid;
 
           const uuid = Uuid();
-          final parkingId = uuid.v4();
+          final mobileId = uuid.v4();
           final images = event.image;
           final imageList = [];
           for (final image in images!) {
@@ -37,7 +37,7 @@ class InformationAddBloc
             imageList.add(imagelink);
           }
 
-          await mobileAdd.doc(auth.currentUser!.uid).set({
+          await mobileAdd.doc(mobileId).set({
             'Name': event.name,
             'Description': event.description,
             'Price': event.price,
@@ -59,7 +59,7 @@ class InformationAddBloc
           final userId = auth.currentUser!.uid;
 
           const uuid = Uuid();
-          final parkingId = uuid.v4();
+          final mobileId = uuid.v4();
           final images = event.image;
           final imageList = [];
           for (final image in images!) {
@@ -73,7 +73,7 @@ class InformationAddBloc
             imageList.add(imagelink);
           }
 
-          await mobileEdit.doc(auth.currentUser!.uid).update({
+          await mobileEdit.doc(mobileId).update({
             'Name': event.name,
             'Description': event.description,
             'Price': event.price,

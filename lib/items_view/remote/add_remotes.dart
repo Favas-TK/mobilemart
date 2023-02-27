@@ -6,10 +6,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:mobilemart/extra/res/colors.dart';
 import 'package:mobilemart/extra/res/const_widget.dart';
-import 'package:mobilemart/items_view/mobilePhone/bloc/information_add_bloc.dart';
+import 'package:mobilemart/items_view/remote/bloc/information_add_bloc.dart';
 import 'package:mobilemart/items_view/remote/remotes.dart';
 import 'package:mobilemart/view/screen_get_started/widgets/custom_elevated_btn_widget.dart';
-import 'package:mobilemart/view/screen_home/homscreen.dart';
 import 'package:mobilemart/view/screen_login/widgets/custom_text_field_widget.dart';
 
 
@@ -66,7 +65,7 @@ class _AddRemotesState extends State<AddRemotes> {
                 content: Text('Sucessfully added'),
               ),
             );
-            Navigator.push(
+            Navigator.pushReplacement(
               context,
               MaterialPageRoute<dynamic>(
                 builder: (context) => RemotePage(),
@@ -154,7 +153,7 @@ class _AddRemotesState extends State<AddRemotes> {
                             child: CustomElevatedBtnWidget(
                               btnText: 'Submit',
                               onpressed: () => itemDetails.add(
-                                AddDetailEvent(
+                                RemoteAddDetailEvent(
                                   image: imagefiles,
                                   name: remoteName.text,
                                   description: remoteDescription.text,

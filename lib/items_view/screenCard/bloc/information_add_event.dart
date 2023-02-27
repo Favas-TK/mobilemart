@@ -3,8 +3,8 @@ part of 'information_add_bloc.dart';
 @immutable
 abstract class InformationAddEvent {}
 
-class AddDetailEvent extends InformationAddEvent {
-  AddDetailEvent({
+class ScreenCardAddDetailEvent extends InformationAddEvent {
+  ScreenCardAddDetailEvent({
     required this.image,
     required this.name,
     required this.description,

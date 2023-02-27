@@ -1,23 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:mobilemart/extra/res/colors.dart';
-import 'package:mobilemart/items_view/BT_dongle/BT_Dongle.dart';
-import 'package:mobilemart/items_view/BT_speaker/BT_Speaker.dart';
-import 'package:mobilemart/items_view/Charger/chrger.dart';
-import 'package:mobilemart/items_view/HeadPhone/head_phone.dart';
-import 'package:mobilemart/items_view/OTG/otg.dart';
-import 'package:mobilemart/items_view/Sim_ejecter/sim_ejecter.dart';
-import 'package:mobilemart/items_view/USB/usb.dart';
-import 'package:mobilemart/items_view/aux_cable/aux_cable.dart';
-import 'package:mobilemart/items_view/memory/memory_card.dart';
-import 'package:mobilemart/items_view/mobilePhone/mobile_phone.dart';
-import 'package:mobilemart/items_view/mouse/mouses.dart';
-import 'package:mobilemart/items_view/pouch/pouch.dart';
-import 'package:mobilemart/items_view/reader/reader.dart';
-import 'package:mobilemart/items_view/remote/remotes.dart';
-import 'package:mobilemart/items_view/screenCard/screen_card.dart';
-import 'package:mobilemart/view/screen_get_started/widgets/custom_text_widget.dart';
-import 'package:mobilemart/view/screen_home/drawer.dart';
-import 'package:mobilemart/view/screen_home/widgets/grid_data.dart';
+import 'package:mobilemart/extra/exports/exports.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -34,7 +15,7 @@ class HomeScreen extends StatelessWidget {
             color: white,
           ),
         ),
-        drawer:  CustomeDrawer(),
+        drawer: CustomeDrawer(),
         body: GridView(
           scrollDirection: Axis.vertical,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -46,8 +27,7 @@ class HomeScreen extends StatelessWidget {
           ),
           children: [
             GridData(
-              image:
-                  'assets/images/phone-removebg-preview.png',
+              image: 'assets/images/phone-removebg-preview.png',
               text: 'Mobile Phones',
               ontap: () {
                 Navigator.push(
@@ -85,8 +65,7 @@ class HomeScreen extends StatelessWidget {
               },
             ),
             GridData(
-              image:
-                  'assets/images/USBp-removebg-preview.png',
+              image: 'assets/images/USBp-removebg-preview.png',
               text: 'USB',
               ontap: () {
                 Navigator.push(
@@ -98,8 +77,7 @@ class HomeScreen extends StatelessWidget {
               },
             ),
             GridData(
-              image:
-                  'assets/images/OIP-removebg-preview.png',
+              image: 'assets/images/OIP-removebg-preview.png',
               text: 'Memory Card',
               ontap: () {
                 Navigator.push(
@@ -111,8 +89,7 @@ class HomeScreen extends StatelessWidget {
               },
             ),
             GridData(
-              image:
-                  'assets/images/baccover-removebg-preview.png',
+              image: 'assets/images/baccover-removebg-preview.png',
               text: 'Back Cover',
               ontap: () {
                 Navigator.push(
@@ -124,8 +101,7 @@ class HomeScreen extends StatelessWidget {
               },
             ),
             GridData(
-              image:
-                  'assets/images/screencard-removebg-preview.png',
+              image: 'assets/images/screencard-removebg-preview.png',
               text: 'Screen Card',
               ontap: () {
                 Navigator.push(
@@ -137,8 +113,7 @@ class HomeScreen extends StatelessWidget {
               },
             ),
             GridData(
-              image:
-                  'assets/images/OIP__2_-removebg-preview.png',
+              image: 'assets/images/OIP__2_-removebg-preview.png',
               text: 'Reader',
               ontap: () {
                 Navigator.push(
@@ -150,8 +125,7 @@ class HomeScreen extends StatelessWidget {
               },
             ),
             GridData(
-              image:
-                  'assets/images/OIP__3_-removebg-preview.png',
+              image: 'assets/images/OIP__3_-removebg-preview.png',
               text: 'BT Speaker',
               ontap: () {
                 Navigator.push(
@@ -163,8 +137,7 @@ class HomeScreen extends StatelessWidget {
               },
             ),
             GridData(
-              image:
-                  'assets/images/OIP__4_-removebg-preview.png',
+              image: 'assets/images/OIP__4_-removebg-preview.png',
               text: 'BT Dongle',
               ontap: () {
                 Navigator.push(
@@ -176,8 +149,7 @@ class HomeScreen extends StatelessWidget {
               },
             ),
             GridData(
-              image:
-                  'assets/images/Mouse-removebg-preview.png',
+              image: 'assets/images/Mouse-removebg-preview.png',
               text: 'Mouse',
               ontap: () {
                 Navigator.push(
@@ -189,8 +161,7 @@ class HomeScreen extends StatelessWidget {
               },
             ),
             GridData(
-              image:
-                  'assets/images/AUXcable-removebg-preview.png',
+              image: 'assets/images/AUXcable-removebg-preview.png',
               text: 'AUX Cable',
               ontap: () {
                 Navigator.push(
@@ -202,8 +173,7 @@ class HomeScreen extends StatelessWidget {
               },
             ),
             GridData(
-              image:
-                  'assets/images/simejecter-removebg-preview.png',
+              image: 'assets/images/simejecter-removebg-preview.png',
               text: 'Sim  Ejecter',
               ontap: () {
                 Navigator.push(
@@ -215,8 +185,7 @@ class HomeScreen extends StatelessWidget {
               },
             ),
             GridData(
-              image:
-                  'assets/images/Remote-removebg-preview.png',
+              image: 'assets/images/Remote-removebg-preview.png',
               text: 'Remote',
               ontap: () {
                 Navigator.push(
@@ -228,8 +197,7 @@ class HomeScreen extends StatelessWidget {
               },
             ),
             GridData(
-              image:
-                  'assets/images/otg-removebg-preview.png',
+              image: 'assets/images/otg-removebg-preview.png',
               text: 'OTG',
               ontap: () {
                 Navigator.push(

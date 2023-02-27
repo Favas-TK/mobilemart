@@ -64,11 +64,12 @@ class _AddMobilePhonesState extends State<AddMobilePhones> {
                 content: Text('Sucessfully added'),
               ),
             );
-            Navigator.push(
+            Navigator.pushReplacement(
               context,
               MaterialPageRoute<dynamic>(
                 builder: (context) => MobilePhonePage(),
               ),
+               
             );
           }
         },
